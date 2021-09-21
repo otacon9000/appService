@@ -18,10 +18,14 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
-    [Header("Panel")]
+    [Header("Create a Case Panel")]
     public ClientInfoPanel clientInfoPanel;
     public LocationPanel locationPanel; 
+    public PhotoTakenPanel photoTakenPanel; 
     public GameObject borderPanel;
+
+    [Header("Overview Panel")]
+    public GameObject overViewPanel;
 
     [Header("Case")]
     public Case activeCase;

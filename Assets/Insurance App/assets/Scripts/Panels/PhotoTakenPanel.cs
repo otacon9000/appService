@@ -18,5 +18,7 @@ public class PhotoTakenPanel : MonoBehaviour, IPanel
 
     public void ProcessInfo()
     {
+        
+
     }
 }

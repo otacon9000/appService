@@ -16,6 +16,8 @@ public class LocationPanel : MonoBehaviour, IPanel
     public int imgSize;
     public string url = "https://maps.googleapis.com/maps/api/staticmap?";
 
+    private bool _geoDataFailed = false;
+
     private void OnEnable()
     {
         caseNumber.text = "CASE NUMBER " + UIManager.Instance.activeCase.caseID;    
@@ -45,11 +47,13 @@ public class LocationPanel : MonoBehaviour, IPanel
             if(Input.location.status == LocationServiceStatus.Failed)
             {
                 Debug.Log("Unable to determinate device location...");
+                _geoDataFailed = true;
             }
             else
             {
                 xCord = Input.location.lastData.latitude;
                 yCord = Input.location.lastData.longitude;
+
             }
 
             Input.location.Stop();
@@ -81,6 +85,16 @@ public class LocationPanel : MonoBehaviour, IPanel
 
     public void ProcessInfo()
     {
+        if (string.IsNullOrEmpty(notes.text) == false)
+        {
+            UIManager.Instance.activeCase.locationNotes = notes.text;
+        }
+        if(_geoDataFailed == true)
+        {
+            UIManager.Instance.activeCase.locationLatitude = xCord;
+            UIManager.Instance.activeCase.locationLongitude = yCord;
+        }
+        UIManager.Instance.photoTakenPanel.gameObject.SetActive(true);
     }
 }
 

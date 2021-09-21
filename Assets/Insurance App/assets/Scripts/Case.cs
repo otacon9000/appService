@@ -9,7 +9,8 @@ public class Case
     public string caseID;
     public string name;
     public string date;
-    public string locationData;
+    public double locationLatitude;
+    public double locationLongitude;
     public string locationNotes;
     public RawImage photoTaken;
     public string photoNotes;
