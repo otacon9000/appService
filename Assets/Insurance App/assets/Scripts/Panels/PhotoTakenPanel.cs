@@ -18,7 +18,11 @@ public class PhotoTakenPanel : MonoBehaviour, IPanel
 
     public void ProcessInfo()
     {
-        
+        if (string.IsNullOrEmpty(notes.text) == false)
+        {
+            UIManager.Instance.activeCase.locationNotes = notes.text;
+        }
+        UIManager.Instance.overViewPanel.SetActive(true);
 
     }
 }
