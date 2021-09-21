@@ -18,16 +18,53 @@ public class LocationPanel : MonoBehaviour, IPanel
 
     private void OnEnable()
     {
-        caseNumber.text = "CASE NUMBER " + UIManager.Instance.activeCase.caseID;
+        caseNumber.text = "CASE NUMBER " + UIManager.Instance.activeCase.caseID;    
+    }
 
-        url = $"{url}center={xCord},{yCord}&zoom={zoom}&size={imgSize}x{imgSize}&key={apiKey}";
-        //download static map 
+    public IEnumerator Start()
+    {
+        yield return null;
+        //fetch GEO data
+        if(Input.location.isEnabledByUser == true)
+        {
+            Input.location.Start();
+
+            int maxWait = 20;
+            while(Input.location.status == LocationServiceStatus.Initializing && maxWait> 0)
+            {
+                yield return new WaitForSeconds(1.0f);
+                maxWait--;
+            }
+
+            if(maxWait < 1)
+            {
+                Debug.Log("Timed Out");
+                yield break;
+            }
+
+            if(Input.location.status == LocationServiceStatus.Failed)
+            {
+                Debug.Log("Unable to determinate device location...");
+            }
+            else
+            {
+                xCord = Input.location.lastData.latitude;
+                yCord = Input.location.lastData.longitude;
+            }
+
+            Input.location.Stop();
+        }
+        else
+        {
+            Debug.Log("location service are not Enabled");
+        }
         StartCoroutine(GetLocationRoutine());
-    
     }
 
     IEnumerator GetLocationRoutine()
     {
+        url = $"{url}center={xCord},{yCord}&zoom={zoom}&size={imgSize}x{imgSize}&key={apiKey}";
+
         using (WWW map = new WWW(url))
         {
             yield return map;
