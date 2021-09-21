@@ -2994,6 +2994,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de917de6fd192a41bf772248b5c07ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientInfoPanel: {fileID: 26276469}
+  locationPanel: {fileID: 1225331138}
+  borderPanel: {fileID: 884832405}
+  activeCase:
+    caseID: 
+    name: 
+    date: 
+    locationData: 
+    locationNotes: 
+    photoTaken: {fileID: 0}
+    photoNotes: 
 --- !u!1 &839554309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,9 +3571,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 26276466}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 815690205}
+        m_MethodName: CrateNewCase
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5061,6 +5072,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 884832405}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 994344545}
         m_MethodName: SetActive
         m_Mode: 6
@@ -5252,8 +5274,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caseNumber: {fileID: 511943537}
-  map: {fileID: 0}
+  mapImg: {fileID: 1044727474}
   notes: {fileID: 1707432968}
+  apiKey: AIzaSyA8kznIfzU9MU4SAq4jg24XvNLrGbZaW3s
+  xCord: 40.71473
+  yCord: -73.99867
+  zoom: 14
+  imgSize: 400
+  url: https://maps.googleapis.com/maps/api/staticmap?
 --- !u!1 &1231752589
 GameObject:
   m_ObjectHideFlags: 0
@@ -7230,17 +7258,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1225331135}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1840739993
 MonoBehaviour:
