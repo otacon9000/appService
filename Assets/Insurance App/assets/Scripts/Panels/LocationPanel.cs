@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Networking;
 
 public class LocationPanel : MonoBehaviour, IPanel
 {
@@ -96,6 +96,7 @@ public class LocationPanel : MonoBehaviour, IPanel
         }
         UIManager.Instance.photoTakenPanel.gameObject.SetActive(true);
     }
+
 }
 
 

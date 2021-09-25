@@ -12,6 +12,6 @@ public class Case
     public double locationLatitude;
     public double locationLongitude;
     public string locationNotes;
-    public RawImage photoTaken;
+    public Texture photoTaken;
     public string photoNotes;
 }

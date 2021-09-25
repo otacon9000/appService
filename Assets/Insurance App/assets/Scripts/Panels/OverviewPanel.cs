@@ -1,13 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OverviewPanel : MonoBehaviour, IPanel
 {
     public Text caseNumber, fullName, date, locationData, locationNotes;
-    public RawImage photoTaken;
+    public RawImage photoTakenOP;
     public Text photoNotes;
+
+
+
+
+
+    private void OnEnable()
+    {
+        caseNumber.text = "CASE NUMBER " + UIManager.Instance.activeCase.caseID;
+        fullName.text = "FULL NAME: \n" + UIManager.Instance.activeCase.name;
+        date.text = "DATE: \n" + DateTime.Today.ToString();
+        //locationData.text = UIManager.Instance.activeCase.locationLatitude + " " + UIManager.Instance.activeCase.locationLongitude;
+        locationNotes.text = "LOCATION NOTES: \n" + UIManager.Instance.activeCase.locationNotes;
+        photoTakenOP.texture = UIManager.Instance.activeCase.photoTaken;
+        photoNotes.text = "PHOTO NOTES: \n" + UIManager.Instance.activeCase.photoNotes;
+    }
+
+
 
     public void ProcessInfo()
     {
