@@ -52,7 +52,6 @@ public class PhotoTakenPanel : MonoBehaviour, IPanel
     {
         NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
         {
-            Debug.Log("Image path: " + path);
             if (path != null)
             {
                 // Create a Texture2D from the captured image

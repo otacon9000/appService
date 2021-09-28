@@ -49,6 +49,8 @@ public class AWSManager : MonoBehaviour
         }
     }
 
+    public string bucketName;
+
 
     private void Awake()
     {
@@ -71,7 +73,37 @@ public class AWSManager : MonoBehaviour
             {
                 Debug.Log("AWS ERROR: " + responsObject.Exception);
             }
+        }); 
+    }
+
+
+    public void UploadToS3(string path, string caseID)
+    {
+        FileStream stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+        PostObjectRequest request = new PostObjectRequest()
+        {
+            Bucket = bucketName,
+            Key = "case#" + caseID,
+            InputStream = stream,
+            CannedACL = S3CannedACL.Private,
+            Region = _S3Region
+        };
+
+        S3Client.PostObjectAsync(request, (responseObj) =>
+        {
+            if (responseObj.Exception == null)
+            {
+                Debug.Log("Successfully posted to bucket");
+            }
+            else
+            {
+                Debug.Log("Exception occur during uploading: " + responseObj.Exception);
+            }
         });
-     
+        
+
+
+
     }
 }

@@ -1805,8 +1805,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805450156}
   m_HandleRect: {fileID: 805450154}
   m_Direction: 2
-  m_Value: 1.0000004
-  m_Size: 0.6956864
+  m_Value: 1
+  m_Size: 0.6956523
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2814,7 +2814,7 @@ RectTransform:
   m_Father: {fileID: 670104049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.3043136}
+  m_AnchorMin: {x: 0, y: 0.3043477}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -6092,6 +6092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7baeab35ef4a9743a86835d5737923b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  S3Region: us-east-2
+  bucketName: app-service-case-file
 --- !u!4 &1497528848
 Transform:
   m_ObjectHideFlags: 0
