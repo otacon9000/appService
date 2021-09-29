@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
@@ -25,6 +26,10 @@ public class UIManager : MonoBehaviour
     public LocationPanel locationPanel; 
     public PhotoTakenPanel photoTakenPanel; 
     public GameObject borderPanel;
+
+    [Header("Find a Case Panel")]
+    public SearchPanel searchPanel;
+    public SelectPanel selectPanel;
 
     [Header("Overview Panel")]
     public GameObject overViewPanel;
@@ -72,4 +77,11 @@ public class UIManager : MonoBehaviour
 
         AWSManager.Instance.UploadToS3(filePath,  awsCase.caseID);
     }
+
+
+    public void GoToHome()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
 }

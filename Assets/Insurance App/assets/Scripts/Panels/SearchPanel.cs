@@ -9,6 +9,10 @@ public class SearchPanel : MonoBehaviour, IPanel
 
     public void ProcessInfo()
     {
-        
+        AWSManager.Instance.GetList(caseNumber.text, () =>
+        {
+            UIManager.Instance.selectPanel.gameObject.SetActive(true);
+        });
+
     }
 }
