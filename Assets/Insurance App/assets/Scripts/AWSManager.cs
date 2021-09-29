@@ -10,6 +10,7 @@ using Amazon.S3.Util;
 using System.Collections.Generic;
 using Amazon.CognitoIdentity;
 using Amazon;
+using UnityEngine.SceneManagement;
 
 public class AWSManager : MonoBehaviour
 {
@@ -60,20 +61,20 @@ public class AWSManager : MonoBehaviour
 
         AWSConfigs.HttpClient = AWSConfigs.HttpClientOption.UnityWebRequest;
 
-        S3Client.ListBucketsAsync(new ListBucketsRequest(), (responsObject) =>
-        {
-            if(responsObject.Exception == null)
-            {
-                responsObject.Response.Buckets.ForEach((s3b) =>
-                {
-                    Debug.Log("BucketName: " + s3b.BucketName);
-                });
+        //S3Client.ListBucketsAsync(new ListBucketsRequest(), (responsObject) =>
+        //{
+        //    if(responsObject.Exception == null)
+        //    {
+        //        responsObject.Response.Buckets.ForEach((s3b) =>
+        //        {
+        //            Debug.Log("BucketName: " + s3b.BucketName);
+        //        });
                 
-            }else
-            {
-                Debug.Log("AWS ERROR: " + responsObject.Exception);
-            }
-        }); 
+        //    }else
+        //    {
+        //        Debug.Log("AWS ERROR: " + responsObject.Exception);
+        //    }
+        //}); 
     }
 
 
@@ -95,6 +96,7 @@ public class AWSManager : MonoBehaviour
             if (responseObj.Exception == null)
             {
                 Debug.Log("Successfully posted to bucket");
+                SceneManager.LoadScene(0);
             }
             else
             {
